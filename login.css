@@ -1,0 +1,151 @@
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8f0fe 100%);
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+.login-box {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    padding: 35px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.header .graduation-cap {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="%232969ff"><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.3 20.3V224c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32H78.3L269.7 475.9c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1L624.2 278.5c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1C336.1 33.4 328.1 32 320 32zM128 352V176l192-68 192 68v176L320 422.5 128 352z"/></svg>') no-repeat center;
+    background-size: contain;
+}
+
+.header h2 {
+    margin: 10px 0;
+    color: #2969ff;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.header p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.login-form .form-group {
+    margin-bottom: 20px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #495057;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e4e8;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: #2969ff;
+    box-shadow: 0 0 0 3px rgba(41, 105, 255, 0.1);
+    background-color: white;
+}
+
+.forgot-password {
+    text-align: right;
+}
+
+.forgot-link {
+    color: #2969ff;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background-color: #2969ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #1c4cd4;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.signup-link a {
+    color: #2969ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Add these styles to login.css and signup.css */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+    transition: color 0.3s;
+    z-index: 10;
+}
+
+.password-toggle:hover {
+    color: #2969ff;
+}

@@ -1,0 +1,13 @@
+# Email Configuration
+EMAIL_USER=puchkuu18@gmail.com
+EMAIL_PASS=ghjnqiupzhyytbgr
+
+# JWT Secrets
+JWT_SECRET=generate_a_long_random_secret_here
+EMAIL_SECRET=generate_another_long_random_secret_here
+
+# Database Configuration
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=0000
+DB_NAME=school_management_system

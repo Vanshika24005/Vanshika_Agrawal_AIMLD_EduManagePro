@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduManage Pro</title>
+    <link rel="stylesheet" href="login.css">
+    <!-- Add eye icon using Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="header">
+                <div class="role-icon"></div>
+                <h2 id="roleTitle">Role Login</h2>
+                <p id="roleSubtitle">Login to your account</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper password-wrapper">
+                        <input type="password" id="password" name="password" required placeholder="Enter your password">
+                        <span class="password-toggle" id="passwordToggle">
+                            <i class="far fa-eye"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-login">
+                        Login
+                    </button>
+                </div>
+
+                <div class="signup-link">
+                    Don't have an account? 
+                    <a href="signup.html">Sign up here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+
+    <script src="login.js"></script>
+</body>
+</html>

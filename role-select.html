@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Role - EduManage Pro</title>
+    <link rel="stylesheet" href="role-select.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="role-selection-box">
+            <div class="header">
+                <div class="graduation-cap"></div>
+                <h2>Select Your Role</h2>
+                <p>Choose how you'll access EduManage Pro</p>
+            </div>
+
+            <div class="role-grid">
+                <div class="role-card" data-role="admin">
+                    <i class="fas fa-user-shield"></i>
+                    <h3>School Administrator</h3>
+                    <p>Manage school operations and settings</p>
+                </div>
+                <div class="role-card" data-role="teacher">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Teacher</h3>
+                    <p>Manage classes, grades, and student progress</p>
+                </div>
+                <div class="role-card" data-role="student">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>Student</h3>
+                    <p>Access course materials and track progress</p>
+                </div>
+                <div class="role-card" data-role="parent">
+                    <i class="fas fa-user-friends"></i>
+                    <h3>Parent</h3>
+                    <p>Monitor child's academic performance</p>
+                </div>
+            </div>
+
+            <div class="role-confirmation">
+                <button id="continueBtn" class="btn-continue" disabled>
+                    Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="role-select.js"></script>
+</body>
+</html>

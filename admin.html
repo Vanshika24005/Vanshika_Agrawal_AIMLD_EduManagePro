@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EduManage Pro</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="graduation-cap"></div>
+                    <h2>EduManage Pro</h2>
+                </div>
+                <button id="sidebar-toggle" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <div class="user-details">
+                    <h3 id="admin-name">Admin</h3>
+                    <p>Administrator</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li data-section="teachers">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Teachers</span>
+                    </li>
+                    <li data-section="students">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </li>
+                    <li data-section="parents">
+                        <i class="fas fa-user-friends"></i>
+                        <span>Parents</span>
+                    </li>
+                    <li data-section="classes">
+                        <i class="fas fa-chalkboard"></i>
+                        <span>Classes</span>
+                    </li>
+                    <li data-section="subjects">
+                        <i class="fas fa-book"></i>
+                        <span>Subjects</span>
+                    </li>
+                    <li data-section="attendance">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </li>
+                    <li data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button id="logout-btn" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <h1 id="section-title">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    
+                </div>
+            </header>
+
+            <!-- Content Sections -->
+            <div class="content-wrapper">
+                <!-- Dashboard Section -->
+                <section id="dashboard-section" class="content-section active">
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="teacher-count">0</h3>
+                                <p>Teachers</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="student-count">0</h3>
+                                <p>Students</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-chalkboard"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="class-count">0</h3>
+                                <p>Classes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3 id="subject-count">0</h3>
+                                <p>Subjects</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <h2>Quick Actions</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn" data-action="add-teacher">
+                                <i class="fas fa-plus"></i> Add Teacher
+                            </button>
+                            <button class="action-btn" data-action="add-student">
+                                <i class="fas fa-plus"></i> Add Student
+                            </button>
+                            <button class="action-btn" data-action="add-class">
+                                <i class="fas fa-plus"></i> Add Class
+                            </button>
+                            <button class="action-btn" data-action="add-subject">
+                                <i class="fas fa-plus"></i> Add Subject
+                            </button>
+                        </div>
+                    </div>
+                    
+                    
+                </section>
+                
+                <!-- Teachers Section -->
+                <section id="teachers-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Teachers</h2>
+                        <button id="add-teacher-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Add New Teacher
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="search-filter">
+                            <input type="text" id="teacher-search" placeholder="Search teachers...">
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="dropdown-filter">
+                            <select id="teacher-filter">
+                                <option value="all">All Departments</option>
+                                <option value="science">Science</option>
+                                <option value="mathematics">Mathematics</option>
+                                <option value="english">English</option>
+                                <option value="history">History</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="teachers-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Department</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teachers-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="7">No teachers added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Students Section -->
+                <section id="students-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Students</h2>
+                        <button id="add-student-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Add New Student
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="search-filter">
+                            <input type="text" id="student-search" placeholder="Search students...">
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="dropdown-filter">
+                            <select id="student-filter">
+                                <option value="all">All Classes</option>
+                                <option value="class-1">Class 1</option>
+                                <option value="class-2">Class 2</option>
+                                <option value="class-3">Class 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="students-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Class</th>
+                                    <th>Parent</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="students-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="7">No students added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Parents Section -->
+                <section id="parents-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Parents</h2>
+                        <button id="add-parent-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Add New Parent
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="search-filter">
+                            <input type="text" id="parent-search" placeholder="Search parents...">
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="parents-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Children</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="parents-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="6">No parents added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Classes Section -->
+                <section id="classes-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Classes</h2>
+                        <button id="add-class-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Add New Class
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="search-filter">
+                            <input type="text" id="class-search" placeholder="Search classes...">
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="classes-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Class Name</th>
+                                    <th>Class Teacher</th>
+                                    <th>Total Students</th>
+                                    <th>Room No.</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="classes-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="6">No classes added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Subjects Section -->
+                <section id="subjects-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Subjects</h2>
+                        <button id="add-subject-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Add New Subject
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="search-filter">
+                            <input type="text" id="subject-search" placeholder="Search subjects...">
+                            <button class="search-btn"><i class="fas fa-search"></i></button>
+                        </div>
+                        <div class="dropdown-filter">
+                            <select id="subject-filter">
+                                <option value="all">All Classes</option>
+                                <option value="class-1">Class 1</option>
+                                <option value="class-2">Class 2</option>
+                                <option value="class-3">Class 3</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="subjects-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Subject Name</th>
+                                    <th>Class</th>
+                                    <th>Teacher</th>
+                                    <th>Book</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subjects-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="6">No subjects added yet.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+                
+                <!-- Attendance Section -->
+                <section id="attendance-section" class="content-section">
+                    <div class="section-header">
+                        <h2>Manage Attendance</h2>
+                        <button id="take-attendance-btn" class="primary-btn">
+                            <i class="fas fa-plus"></i> Take Attendance
+                        </button>
+                    </div>
+                    
+                    <div class="data-filters">
+                        <div class="date-filter">
+                            <label for="attendance-date">Date:</label>
+                            <input type="date" id="attendance-date">
+                        </div>
+                        <div class="dropdown-filter">
+                            <select id="attendance-class-filter">
+                                <option value="all">All Classes</option>
+                                <option value="class-1">Class 1</option>
+                                <option value="class-2">Class 2</option>
+                                <option value="class-3">Class 3</option>
+                            </select>
+                        </div>
+                        <button id="view-attendance-btn" class="secondary-btn">
+                            <i class="fas fa-eye"></i> View Attendance
+                        </button>
+                    </div>
+                    
+                    <div class="data-table-container">
+                        <table class="data-table" id="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Student Name</th>
+                                    <th>Class</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-table-body">
+                                <tr class="empty-row">
+                                    <td colspan="6">No attendance records to display.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="attendance-summary">
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="summary-info">
+                                <h3 id="present-count">0</h3>
+                                <p>Present</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-times-circle"></i>
+                            </div>
+                            <div class="summary-info">
+                                <h3 id="absent-count">0</h3>
+                                <p>Absent</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="summary-info">
+                                <h3 id="late-count">0</h3>
+                                <p>Late</p>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <div class="summary-icon">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="summary-info">
+                                <h3 id="attendance-percentage">0%</h3>
+                                <p>Attendance Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Settings Section -->
+                <section id="settings-section" class="content-section">
+                    <div class="section-header">
+                        <h2>System Settings</h2>
+                    </div>
+                    
+                    <div class="settings-container">
+                        <div class="settings-group">
+                            <h3>School Information</h3>
+                            <form id="school-info-form" class="settings-form">
+                                <div class="form-group">
+                                    <label for="school-name">School Name</label>
+                                    <input type="text" id="school-name" placeholder="Enter school name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="school-address">Address</label>
+                                    <textarea id="school-address" placeholder="Enter school address"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="school-email">Email</label>
+                                    <input type="email" id="school-email" placeholder="Enter school email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="school-phone">Phone</label>
+                                    <input type="text" id="school-phone" placeholder="Enter school phone number">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="save-btn">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="settings-group">
+                            <h3>Account Settings</h3>
+                            <form id="account-settings-form" class="settings-form">
+                                <div class="form-group">
+                                    <label for="admin-fullname">Full Name</label>
+                                    <input type="text" id="admin-fullname" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin-email">Email</label>
+                                    <input type="email" id="admin-email" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="current-password">Current Password</label>
+                                    <input type="password" id="current-password" placeholder="Enter current password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">New Password</label>
+                                    <input type="password" id="new-password" placeholder="Enter new password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-new-password">Confirm New Password</label>
+                                    <input type="password" id="confirm-new-password" placeholder="Confirm new password">
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="save-btn">Update Account</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Templates -->
+    <!-- Add Teacher Modal -->
+    <div id="add-teacher-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Teacher</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-teacher-form">
+                    <div class="form-group">
+                        <label for="teacher-name">Full Name</label>
+                        <input type="text" id="teacher-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-email">Email</label>
+                        <input type="email" id="teacher-email" required placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-password">Password</label>
+                        <input type="password" id="teacher-password" required placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-department">Department</label>
+                        <select id="teacher-department" required>
+                            <option value="">Select Department</option>
+                            <option value="science">Science</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="english">English</option>
+                            <option value="history">History</option>
+                            <option value="art">Art</option>
+                            <option value="physical-education">Physical Education</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-phone">Phone Number</label>
+                        <input type="text" id="teacher-phone" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="teacher-address">Address</label>
+                        <textarea id="teacher-address" placeholder="Enter address"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Teacher</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student Modal -->
+    <div id="add-student-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Student</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-student-form">
+                    <div class="form-group">
+                        <label for="student-name">Full Name</label>
+                        <input type="text" id="student-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-email">Email</label>
+                        <input type="email" id="student-email" required placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-password">Password</label>
+                        <input type="password" id="student-password" required placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="student-class">Class</label>
+                        <select id="student-class" required>
+                            <option value="">Select Class</option>
+                            <option value="class-1">Class 1</option>
+                            <option value="class-2">Class 2</option>
+                            <option value="class-3">Class 3</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="student-parent">Parent</label>
+                        <select id="student-parent">
+                            <option value="">Select Parent</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="student-address">Address</label>
+                        <textarea id="student-address" placeholder="Enter address"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Student</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Class Modal -->
+    <div id="add-class-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Class</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-class-form">
+                    <div class="form-group">
+                        <label for="class-name">Class Name</label>
+                        <input type="text" id="class-name" required placeholder="Enter class name">
+                    </div>
+                    <div class="form-group">
+                        <label for="class-teacher">Class Teacher</label>
+                        <select id="class-teacher">
+                            <option value="">Select Teacher</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-room">Room Number</label>
+                        <input type="text" id="class-room" placeholder="Enter room number">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Class</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Subject Modal -->
+    <div id="add-subject-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Subject</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-subject-form">
+                    <div class="form-group">
+                        <label for="subject-name">Subject Name</label>
+                        <input type="text" id="subject-name" required placeholder="Enter subject name">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject-class">Class</label>
+                        <select id="subject-class" required>
+                            <option value="">Select Class</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject-teacher">Teacher</label>
+                        <select id="subject-teacher">
+                            <option value="">Select Teacher</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject-book">Book</label>
+                        <input type="text" id="subject-book" placeholder="Enter book name">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Subject</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Parent Modal -->
+    <div id="add-parent-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Parent</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="add-parent-form">
+                    <div class="form-group">
+                        <label for="parent-name">Full Name</label>
+                        <input type="text" id="parent-name" required placeholder="Enter full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-email">Email</label>
+                        <input type="email" id="parent-email" required placeholder="Enter email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-password">Password</label>
+                        <input type="password" id="parent-password" required placeholder="Create password">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-phone">Phone Number</label>
+                        <input type="text" id="parent-phone" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent-address">Address</label>
+                        <textarea id="parent-address" placeholder="Enter address"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Add Parent</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Take Attendance Modal -->
+    <div id="take-attendance-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Take Attendance</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="take-attendance-form">
+                    <div class="form-group">
+                        <label for="attendance-class">Class</label>
+                        <select id="attendance-class" required>
+                            <option value="">Select Class</option>
+                            <!-- Will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="attendance-date-input">Date</label>
+                        <input type="date" id="attendance-date-input" required>
+                    </div>
+                    
+                    <div class="attendance-list">
+                        <table class="attendance-table">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Student Name</th>
+                                    <th>Status</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="attendance-students-list">
+                                <!-- Will be populated dynamically -->
+                                <tr class="empty-row">
+                                    <td colspan="4">No students in this class.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="submit-btn">Save Attendance</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Action</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="confirmation-message">Are you sure you want to proceed?</p>
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="button" id="confirm-action-btn" class="delete-btn">Confirm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
